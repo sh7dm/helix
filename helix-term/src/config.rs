@@ -20,14 +20,18 @@ pub struct LspConfig {
 }
 
 #[derive(Debug, Clone, PartialEq, Deserialize)]
-#[serde(rename_all = "kebab-case")]
+#[serde(rename_all = "kebab-case", default)]
 pub struct TerminalConfig {
     pub mouse: bool,
+    pub scroll_lines: u8,
 }
 
 impl Default for TerminalConfig {
     fn default() -> Self {
-        Self { mouse: true }
+        Self {
+            mouse: true,
+            scroll_lines: 3,
+        }
     }
 }
 
